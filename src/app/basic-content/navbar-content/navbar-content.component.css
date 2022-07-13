@@ -1,0 +1,209 @@
+/*main nav*/
+nav {
+  background-color: white !important;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.mdstyle label {
+  font-size: 13px;
+  font-family: "Yu Gothic";
+  font-weight: bold;
+}
+
+.mdstyle button {
+  font-size: 15px;
+  font-family: "Yu Gothic";
+}
+
+/*main nav css*/
+#mainnav {
+  padding-right: 28px
+}
+
+/*company logo styles*/
+nav img {
+  height: 50px;
+  width: 180px;
+}
+
+/*main selectors style*/
+.menudesign {
+  background-color: #363839;
+}
+
+.menudesign a {
+  color: white !important;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 7px 20px;
+  border-right: 1px solid #b7b7b7;
+}
+
+.menudesign:hover {
+  background-color: #eaeaea;
+}
+
+.menudesign a:hover {
+  color: #363839 !important;
+}
+
+/*button style when browser minimize*/
+.navbar-toggler-icon {
+  background-image: url(../../../assets/Menu2_50px.png);
+}
+
+/*main selectors hover styles*/
+.btn-outline-success:hover {
+  background-color: black;
+  color: white !important;
+}
+
+/*searchbar styles*/
+#searchtextbar {
+  background-image: url(../../../assets/Search_52px.png);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 2px 4px;
+  padding: 12px 20px 12px 30px;
+  border-radius: 10px;
+  height: 30px
+}
+
+/*edit account dropdown*/
+.dropdown {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  right: 10px;
+  margin-left: -110px;
+  margin-top: -1px;
+  background-color: #363839;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.dropdown-menu a {
+  padding: 10px;
+  color: white !important;
+  font-weight: bold;
+  font-size: 12px;
+  border-bottom: 1px solid white;
+}
+
+.dropdown-menu a:hover {
+  color: black !important;
+}
+
+@media only screen and (max-width: 1070px) {
+
+  #formbar input {
+    width: 150px;
+  }
+
+  nav img {
+    padding-top: 10px;
+    height: 50px;
+    width: 180px;
+  }
+}
+
+@media only screen and (max-width: 993px) {
+  #mainnav {
+    padding-top: 0px;
+  }
+
+  .dropdown-menu {
+    right: 10px;
+    margin-left: -50px;
+    margin-top: -1px;
+    background-color: #363839;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  #formbar img {
+    position: relative;
+    top: 5px;
+    padding: 0;
+  }
+
+  #formbar {
+    position: relative;
+    top: 5px;
+    padding: 0;
+    max-width: 320px;
+  }
+
+  .dropdown-menu {
+    right: 10px;
+    margin-left: -50px;
+    margin-top: 4px;
+    background-color: #363839;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .dropdown-menu {
+    right: 10px;
+    margin-left: 0px;
+    margin-top: 4px;
+    background-color: #363839;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  #mainnav {
+    padding-right: 0px
+  }
+}
+
+#incorrectdiv {
+  display: none;
+}
+
+#userExist {
+  display: none;
+}
+
+#IncorrectOldPassword {
+  display: none;
+}
+
+#userExistupdate {
+  display: none;
+}
+
+#IncorrectEmail {
+  display: none;
+}
+
+#field {
+  display: none;
+}
+
+#fields {
+  display: none;
+}
+
+#blank {
+  display: none;
+}
+
+#length {
+  display: none;
+}

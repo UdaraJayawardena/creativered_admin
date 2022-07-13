@@ -1,0 +1,224 @@
+<head>
+  <title>Customer</title>
+</head>
+<app-customer-page-title></app-customer-page-title>
+<div class="container-fluid mainCustomerDiv">
+
+  <br>
+  <div class="row">
+    <div class="col-md-8">
+      <input #searchValue (keydown)="onKeydown($event,searchValue.value)" id="searchtextbar"
+             class="form-control ml-sm-3" type="text" placeholder="Email">
+    </div>
+    <div id="typesCustomers">
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button value="all" #all (click)="getAllCustomers(all.value)" type="button" class="btn btn-outline-secondary">
+          All
+        </button>
+        <button value="true" #veri (click)="getAllCustomers(veri.value)" type="button"
+                class="btn btn-outline-secondary">Verified
+        </button>
+        <button value="false" #un (click)="getAllCustomers(un.value)" type="button"
+                class="btn btn-outline-secondary">Not Verified
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="detailsDiv">
+    <div class="col-md-8 table-responsive container-fluid tablestyle">
+      <table class="table table-hover" id="cutmertbl">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Subscribe</th>
+          <th scope="col">Realm</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Email Verified</th>
+          <th scope="col">Detail</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        <tr (click)="onSelect(cus)" *ngFor="let cus of customer">
+          <td>{{cus.id}}</td>
+          <td>{{cus.firstName}}</td>
+          <td>{{cus.lastName}}</td>
+          <td>{{cus.subscribe}}</td>
+          <td>{{cus.realm}}</td>
+          <td>{{cus.username}}</td>
+          <td>{{cus.email}}</td>
+          <td>{{cus.emailVerified}}</td>
+          <td class="centerize">
+            <button data-target="#shippingmodal" data-toggle="modal" (click)="showShipping(cus)"
+                    class="btn btn-outline-success">Show
+            </button>
+          </td>
+        </tr>
+        <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+        </tbody>
+      </table>
+
+    </div>
+    <div style="border: solid #A94545 2px" class="col-md-4 contents mr-12">
+      <div class="row ">
+        <div style="background-color: #D60D39; height: 38px; text-align: center; font-family: 'Roboto', sans-serif;"
+             class="col-md-12">
+          <label style="color: white">Customer Details</label>
+        </div>
+        <div style="background-color: whitesmoke" class="col-md-12">
+          <div style="padding: 3px">
+
+            <!--customer name-->
+            <div class="row" style="padding-left: 5px ">
+              <label style="padding-right: 5px;color: #D60D39"><b>ID - </b> </label>
+              <label style="padding-left: 10px">{{id}}</label>
+            </div>
+
+            <!--customer last name-->
+            <div class="row" style="padding-left: 5px">
+              <label style="padding-right: 5px;color: #D60D39"><b>First Name - </b> </label>
+              <label style="padding-left: 10px">{{firstName}}</label>
+            </div>
+
+            <!--customer email-->
+            <div class="row" style="padding-left: 5px">
+              <label style="padding-right: 5px;color: #D60D39"><b>Last Name - </b> </label>
+              <label style="padding-left: 10px">{{lastName}}</label>
+            </div>
+
+            <!--customer contact-->
+            <div class="row" style="padding-left: 5px">
+              <label style="padding-right: 5px;color: #D60D39"><b>User Name - </b> </label>
+              <label style="padding-left: 10px">{{contact}}</label>
+            </div>
+
+            <!--cuatomer address-->
+            <div class="row" style="padding-left: 5px">
+              <label style="padding-right: 5px;color: #D60D39"><b>Email - </b> </label>
+              <p style="padding-left: 10px">{{status}}</p>
+            </div>
+
+            <!--customer shipping address-->
+            <div class="row" style="padding-left: 5px">
+              <label style="padding-right: 5px;color: #D60D39"><b>Verified - </b> </label>
+              <p style="padding-left: 10px">{{password}}</p>
+            </div>
+            <br>
+          </div>
+
+          <div class="table-responsive container-fluid tablestyle">
+            <div>
+              <table class="table" id="cstmrtbl">
+                <thead class="thead-light">
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let ord of orders">
+                  <td>{{ord.id}}</td>
+                  <td>{{ord.orderDate}}</td>
+                  <td>{{ord.status}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="modal" tabindex="-1" id="md" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Order Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputState1">jh</label>
+                          <select id="inputState2" class="form-control">
+                            <option selected>Select Type</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputState2">Category ID</label>
+                          <select id="inputState1" class="form-control">
+                            <option selected>Select Type</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-group col-md-12">
+                          <label for="inputAddress">Item ID</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div id="modelbtn" class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--customer shipping data modal-->
+<div class="modal fade" id="shippingmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: bold" id="exampleModalLabel">Shipping Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body tablestyle">
+        <table class="table table-hover table-responsive">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Address One</th>
+            <th scope="col">Address Two</th>
+            <th scope="col">City</th>
+            <th scope="col">Country</th>
+            <th scope="col">Postal Code</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ship of shipping">
+            <td>{{ship.id}}</td>
+            <td>{{ship.customerShippingId}}</td>
+            <td>{{ship.addressOne}}</td>
+            <td>{{ship.addressTwo}}</td>
+            <td>{{ship.city}}</td>
+            <td>{{ship.country}}</td>
+            <td>{{ship.postalCode}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

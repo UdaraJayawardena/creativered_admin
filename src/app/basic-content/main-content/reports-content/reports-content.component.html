@@ -1,0 +1,368 @@
+<head>
+  <title>Reports</title>
+</head>
+<app-page-title-reports></app-page-title-reports>
+<div class="container-fluid repo">
+  <br>
+
+  <div class="container-fluid">
+
+    <div style="padding-top: 20px" class="container-fluid table-responsive">
+      <ul id="clothing" class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="#normal" id="normal-report" role="tab" data-toggle="tab"
+             aria-controls="category"
+             aria-expanded="true">Normal Reports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#google" id="google-report" role="tab" data-toggle="tab" aria-controls="home">Google
+            Reports</a>
+        </li>
+      </ul>
+
+
+      <div class="tab-content">
+
+        <!--normal-->
+        <br>
+        <div role="tabpanel" class="tab-pane fade show active row" id="normal"
+             aria-labelledby="normal-report">
+
+          <div style="text-align: center">
+            <h5 style="color: #D60D39">Orders Count</h5>
+          </div>
+          <div class="dropdown buttons">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              Yearly
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a (click)="filterByYear(5)" class="dropdown-item limit">Past 5 years</a>
+              <a (click)="filterByYear(2)" class="dropdown-item limit">Past 2 years</a>
+              <a (click)="filterByYear(0)" class="dropdown-item limit">from launch</a>
+            </div>
+          </div>
+
+          <div class="dropdown buttons">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                    data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              Monthly
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a (click)="filterByMonth(6)" class="dropdown-item limit">Past 6 months</a>
+              <a (click)="filterByMonth(12)" class="dropdown-item limit">Past 12 months</a>
+              <a (click)="filterByMonth(24)" class="dropdown-item limit">Past 24 months</a>
+            </div>
+          </div>
+
+          <div class="dropdown buttons">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
+                    data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              Quarterly
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a (click)="filterByQuater(4)" class="dropdown-item limit">last 4 quarters</a>
+              <a (click)="filterByQuater(8)" class="dropdown-item limit">last 8 quarters</a>
+              <a (click)="filterByQuater(12)" class="dropdown-item limit">last 12 quarters</a>
+            </div>
+          </div>
+
+          <div style="float: right">
+            <h6>{{selectedLabel}}</h6>
+          </div>
+
+          <!--chart-->
+          <div class="table-responsive" style="display: block; width: 100%">
+            <table class="table">
+              <tbody>
+              <tr>
+                <td>
+                  <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [colors]="chartColors"
+                          [options]="barChartOptions"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType">
+                  </canvas>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <br>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div style="text-align: center" class="col-xl-11">
+                <h5 style="color: #D60D39">Country wise orders</h5>
+              </div>
+              <div class="col-md-3">
+                <label>Start Date :</label>
+                <input #startdateinput class="form-control,dateofbirth" value="{{curdate}}" type="date"
+                       name="dateofbirth">
+              </div>
+              <div class="col-md-3">
+                <label>End Date :</label>
+                <input #enddateinput class="form-control,dateofbirth" value="{{curdate}}" type="date"
+                       name="dateofbirth">
+              </div>
+              <div class="col-md-3">
+                <button (click)="searchbyDate(startdateinput.value,enddateinput.value)" type="button" class="btn mt-4"
+                        style="background-color: #d60d39;color: white">Search
+                </button>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xl-11 text-center">
+              <div class="table-responsive" style="display: block;width: 100%;">
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <canvas baseChart
+                              [datasets]="barChartData2"
+                              [labels]="barChartLabels2"
+                              [options]="barChartOptions"
+                              [colors]="chartColors"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType">
+                      </canvas>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-xl-11 text-center table-responsive">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <td>
+                    <h5 style="color: #D60D39">Continent wise orders</h5>
+                    <h1 style="font-size: 14px">
+                      total shipping count : {{newcounttotal}}
+                    </h1>
+                    <fusioncharts
+                      width="800"
+                      height="550"
+                      type="world"
+                      [dataSource]="dataSource">
+                    </fusioncharts>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <!--google-->
+        <br>
+        <div role="tabpanel" class="tab-pane fade show" id="google"
+             aria-labelledby="google-report">
+
+          <button type="button" class="btn btn-success" (click)="getReportData()">ok</button>
+
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+
+  <!--=====================================================================================-->
+  <div style="padding-top: 20px" class="container-fluid table-responsive">
+    <ul id="clothing-nav" class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#hits" id="category-tab" role="tab" data-toggle="tab"
+           aria-controls="category"
+           aria-expanded="true">Most Viewed Items</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#count" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Count of
+          Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#selling" id="selling-tab" role="tab" data-toggle="tab" aria-controls="home">Top
+          Selling Items</a>
+      </li>
+    </ul>
+
+
+    <div id="clothing-nav-content" class="tab-content">
+
+      <!--hits table-->
+      <br>
+      <div role="tabpanel" class="tab-pane fade show active row" id="hits"
+           aria-labelledby="category-tab">
+        <div style="float: right;" class="btn-group dropleft">
+          <button style="background-color: #D60D39;" type="button" class="btn btn-danger dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            Limit
+          </button>
+          <div class="dropdown-menu">
+            <a (click)="getHitsItemsFromLimit(10)" class="dropdown-item limit">10</a>
+            <a (click)="getHitsItemsFromLimit(20)" class="dropdown-item limit">20</a>
+            <a (click)="getHitsItemsFromLimit(30)" class="dropdown-item limit">30</a>
+            <a (click)="getHitsItemsFromLimit(40)" class="dropdown-item limit">40</a>
+          </div>
+        </div>
+        <div class="tablestyle">
+          <label style="color: #D60D39; font-size: 15px;">Most Viewed Items</label>
+          <br><br>
+          <div style="float: right">
+            <label style="color: #D60D39; font-size: 15px;">Showing : {{itemLimitation}}</label>
+          </div>
+          <div class="table-responsive" style="height: 45vh;">
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">QtyOnHand</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Hits</th>
+                <th scope="col">Color</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Discount</th>
+                <th scope="col">ProductID</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="tblRows" *ngFor="let itm of item">
+                <td>{{itm.name}}</td>
+                <td>{{itm.brand}}</td>
+                <td>{{itm.qtyOnHand}}</td>
+                <td>{{itm.price}}</td>
+                <td>{{itm.status}}</td>
+                <td>{{itm.hits}}</td>
+                <td>{{itm.color}}</td>
+                <td>{{itm.rate}}</td>
+                <td>{{itm.discount}}</td>
+                <td>{{itm.productid}}</td>
+              </tr>
+              <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!--count table-->
+      <div role="tabpanel" class="tab-pane fade show" id="count"
+           aria-labelledby="home-tab">
+        <div class="col-xl-6 col-md-6">
+          <div style="border: solid #D60D39 2px" class="row contents">
+            <div style="background-color: #D60D39; height: 38px; text-align: center; font-family: 'Roboto', sans-serif;"
+                 class="col-md-12">
+              <label style="color: white">Count of Details</label>
+            </div>
+            <div style="background-color: whitesmoke;"
+                 class="col-md-12 col-xl-12 table-responsive container-fluid tablestyle">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <td>Orders</td>
+                  <td>{{ordersCount}}</td>
+                </tr>
+                <tr>
+                  <td>Customers</td>
+                  <td>{{customersCount}}</td>
+                </tr>
+                <tr>
+                  <td>Items</td>
+                  <td>{{productsCount}}</td>
+                </tr>
+                <tr>
+                  <td>Complains</td>
+                  <td>{{complainsCount}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!--itemSelling table-->
+      <div role="tabpanel" class="tab-pane fade show" id="selling"
+           aria-labelledby="home-tab">
+        <div class="row">
+          <div class="col-xl-11 text-center">
+            <label style="color: #D60D39; font-size: 15px;">Top Selling Items</label>
+          </div>
+          <div class="col-md-3">
+            <label>Start Date :</label>
+            <input style="width: 160px" #startdateinput class="form-control,dateofbirth" value="{{curdate}}" type="date"
+                   name="dateofbirth">
+          </div>
+          <div class="col-md-3">
+            <label>End Date :</label>
+            <input style="width: 160px" #enddateinput class="form-control,dateofbirth" value="{{curdate}}" type="date"
+                   name="dateofbirth">
+          </div>
+          <div class="col-md-3">
+            <button (click)="getTopSellings('daterange',startdateinput.value,enddateinput.value)" type="button"
+                    class="btn mt-4"
+                    style="background-color: #d60d39;color: white">Search
+            </button>
+          </div>
+        </div>
+        <div style="float: right;" class="btn-group dropleft mb-3">
+          <button style="background-color: #D60D39;" type="button" class="btn btn-danger dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            All
+          </button>
+          <div class="dropdown-menu">
+            <a (click)="getTopSellings('all','','')" class="dropdown-item limit">All</a>
+            <a (click)="getTopSellings('lastWeek','','')" class="dropdown-item limit">Last Week</a>
+            <a (click)="getTopSellings('lastMonth','','')" class="dropdown-item limit">Last Month</a>
+            <a (click)="getTopSellings('lastYear','','')" class="dropdown-item limit">Last Year</a>
+          </div>
+        </div>
+        <div class="tablestyle">
+          <div class="table-responsive" style="height: 45vh;">
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Total Sold Price</th>
+                <th scope="col">Total Sold count</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="tblRows" *ngFor="let itemdata of finalitemarray">
+                <td>{{itemdata.id}}</td>
+                <td>{{itemdata.name}}</td>
+                <td>{{itemdata.brand}}</td>
+                <td>{{itemdata.price}}</td>
+                <td>{{itemdata.qtyOnHand}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

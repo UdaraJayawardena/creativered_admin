@@ -1,0 +1,360 @@
+<!--date ranges-->
+<br>
+<div class="row container-fluid">
+  <div class="col-xl-2">
+    <label for="from">from :</label>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input id="from" class="form-control dateRangers" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="from" ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-xl-2">
+    <label for="to">to :</label>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input id="to" class="form-control dateRangers" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="to" ngbDatepicker #ds="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="ds.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-xl-2">
+    <button class="btn btn-danger checkButton" (click)="calculateFromDate()">Search</button>
+  </div>
+</div>
+<div class="container-fluid top">
+  <br>
+  <div class="row">
+    <!--first searchbar-->
+    <div class="col-lg-2 col-xl-2 col-md-3 col-sm-4 col-12 go">
+      <input #orderidinput (keyup.enter)="getOrderFilterOrderID(orderidinput.value)" type="text"
+             class="form-control inputs searchtextbar" placeholder="Order ID">
+    </div>
+    <!--second searchbar-->
+    <div class="col-lg-2 col-xl-2 col-md-3 col-sm-4 col-12 go">
+      <input #cusemailinput (keyup.enter)="getOrderFilterCusmail(cusemailinput.value)" type="text"
+             class="form-control inputs searchtextbar" placeholder="Customer ID">
+    </div>
+    <!--third searchbar-->
+    <div class="col-lg-2 col-xl-2 col-md-3 col-sm-4 col-12 go">
+      <input #bilidinput (keyup.enter)="getOrderFilterbil(bilidinput.value)" type="text"
+             class="form-control inputs searchtextbar"
+             placeholder="Billing ID">
+    </div>
+    <!--forth searchbar-->
+    <div class="col-lg-2 col-xl-2 col-md-3 col-sm-4 col-12 go">
+      <input #shipidinput (keyup.enter)="getOrderFiltership(shipidinput.value)" type="text"
+             class="form-control inputs searchtextbar"
+             placeholder="Shipping ID">
+    </div>
+
+  </div>
+  <!--shipped buttons-->
+  <div class="buttonSet">
+
+    <div role="group" class="btn-group">
+      <button #unshipbtn (click)="getUnshipped()" type="button" value="Unshipping"
+              class="btn btn-outline-secondary">Not-Shipped
+      </button>
+      <button #ship value="shipping" (click)="getShip()" type="button" class="btn btn-outline-secondary">Shipped
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+
+  <div><br><br></div>
+  <div class="container-fluid table-responsive tablestyle">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Order ID</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Order Time</th>
+        <th scope="col">Status</th>
+        <th scope="col">Tracking ID</th>
+        <th scope="col">Payment Method</th>
+        <th scope="col">Payment ID</th>
+        <th scope="col">Customer Order ID</th>
+        <th scope="col">Billing ID</th>
+        <th scope="col">Shipping ID</th>
+        <th class="centerize" scope="col">Detail</th>
+        <th class="centerize" scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody id="tbbody">
+      <tr id="trr" *ngFor="let ordr of orderss">
+        <td>{{ordr.id}}</td>
+        <td>{{ordr.orderDate}}</td>
+        <td>{{ordr.orderTime}}</td>
+        <td #stst id="changestatus">{{ordr.status}}</td>
+        <td>{{ordr.trackingId}}</td>
+        <td>{{ordr.paymentMethod}}</td>
+        <td>{{ordr.paymentId}}</td>
+        <td>{{ordr.customerOrderId}}</td>
+        <td>{{ordr.billingid}}</td>
+        <td>{{ordr.shippingid}}</td>
+        <td class="centerize">
+          <button #detailbutton (click)="showDetail(ordr)" value="details"
+                  class="btn btn-outline-success" data-toggle="modal" data-target="#showModal">Show
+          </button>
+        </td>
+        <td class="centerize">
+          <button id="lasttd" #shipbutton data-toggle="modal" data-target="#trackingmodal" value="shipping"
+                  (click)="shipModal(ordr)" class="btn btn-outline-success">{{ordr.actions}}</button>
+        </td>
+      </tr>
+      <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--order detail modal-->
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body  table-responsive container-fluid">
+
+        <!--order detail table-->
+
+        <div style="padding-top: 20px" class="container-fluid table-responsive">
+          <ul id="clothing-nav" class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#category" id="category-tab" role="tab" data-toggle="tab"
+                 aria-controls="category"
+                 aria-expanded="true">Order Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#home" id="home-tab" role="tab" data-toggle="tab"
+                 aria-controls="home">Billing Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#hats" role="tab" id="hats-tab" data-toggle="tab" aria-controls="hats">Shipping
+                Details</a>
+            </li>
+          </ul>
+
+          <!-- Content Panel -->
+          <div id="clothing-nav-content" class="tab-content">
+
+            <!--order detail tab pane-->
+            <div style="background-color: #e9e9e9" role="tabpanel" class="tablestyle tab-pane fade show active row"
+                 id="category"
+                 aria-labelledby="category-tab">
+
+              <table class="table mt-3">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Order Detail ID</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Item ID</th>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">QTY</th>
+                  <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let ordr of orderdetails">
+                  <td>{{ordr.id}}</td>
+                  <td>{{ordr.color}}</td>
+                  <td>{{ordr.itemid}}</td>
+                  <td>{{ordr.orderid}}</td>
+                  <td>{{ordr.qty}}</td>
+                  <td>{{ordr.price}}</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <!--billing detail tab pane-->
+            <div style="background-color: #e9e9e9" role="tabpanel" class="tablestyle tab-pane fade show" id="home"
+                 aria-labelledby="home-tab">
+
+              <table class="table mt-3">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Billing ID</th>
+                  <th scope="col">Customer ID</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Address One</th>
+                  <th scope="col">Address Two</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Country</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let bl of billingdetails">
+                  <td>{{bl.id}}</td>
+                  <td>{{bl.customerBillingId}}</td>
+                  <td>{{bl.firstName}}</td>
+                  <td>{{bl.lastName}}</td>
+                  <td>{{bl.addressOne}}</td>
+                  <td>{{bl.addressTwo}}</td>
+                  <td>{{bl.city}}</td>
+                  <td>{{bl.country}}</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <!--shipping derail tab pane-->
+            <div role="tabpanel" style="background-color: #e9e9e9" class="tablestyle tab-pane fade" id="hats"
+                 aria-labelledby="hats-tab">
+
+              <table class="table mt-3">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Shipping ID</th>
+                  <th scope="col">Customer ID</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Address One</th>
+                  <th scope="col">Address Two</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Postal Code</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let sp of shippingdetails">
+                  <td>{{sp.id}}</td>
+                  <td>{{sp.customerShippingId}}</td>
+                  <td>{{sp.firstName}}</td>
+                  <td>{{sp.lastName}}</td>
+                  <td>{{sp.addressOne}}</td>
+                  <td>{{sp.addressTwo}}</td>
+                  <td>{{sp.city}}</td>
+                  <td>{{sp.country}}</td>
+                  <td>{{sp.postalCode}}</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--tracking modal-->
+<div class="modal fade" id="trackingmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: bold" id="exampleModalLabel1"><u>Shipping Area</u></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!--tracking modal data-->
+        <form action="http://18.220.153.11:8050/mail" method="post" id="tokendivv">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Order ID</label>
+              <input value="{{torderidinput}}" type="text" #torderidvalue class="form-control" id="inputEmail41">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Billing ID</label>
+              <input value="{{tbillingidinput}}" type="text" class="form-control" id="inputPassword41">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Shipping ID</label>
+              <input value="{{tshippingidinput}}" type="text" class="form-control" id="inputEmail42">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Order Date</label>
+              <input value="{{torderdateinput}}" type="text" class="form-control" id="inputPassword42">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Order Time</label>
+              <input value="{{tordertimeinput}}" type="text" class="form-control" id="inputEmail43">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Status</label>
+              <input value="{{tstatusinput}}" type="text" class="form-control" id="inputPassword43">
+            </div>
+          </div>
+          <div class="form-row">
+            <div id="trackdiv" class="form-group col-md-6">
+              <label for="inputEmail4">Tracking ID</label>
+              <input readonly value="{{rdeliveryaddressinput}}" type="text" class="form-control" id="inputEmail44"
+                     placeholder="none">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Payment Method</label>
+              <input value="{{rpaymentmethodinput}}" type="text" class="form-control" id="inputPassword44">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Payment ID</label>
+              <input value="{{rpaymentidinput}}" type="text" class="form-control" id="inputEmail4">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Customer Email</label>
+              <input value="{{rcustomeremailinput}}" #tcusvalue type="text" class="form-control"
+                     id="inputPassword4">
+            </div>
+          </div>
+          <div class="form-row">
+            <div id="divtrack" style="text-align: center;font-weight: bold" class="form-group col-md-12">
+              <label style="color: #D60D39" for="inputEmail4">TRACKING ID (insert below)</label>
+              <input value="{{trackinginput}}" name="subject" #ttrackid style="text-align: center;font-weight: bold"
+                     type="text"
+                     class="form-control" id="inputEmail6">
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button id="unbtn" type="button" (click)="unshipdata(torderidvalue.value)" class="btn btn-success">Unship
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <button (click)="shipDone(torderidvalue.value, ttrackid.value, tcusvalue.value)" id="shipbtn" type="submit"
+                class="btn btn-success">Ship Done
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

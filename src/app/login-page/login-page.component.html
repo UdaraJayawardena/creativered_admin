@@ -1,0 +1,33 @@
+<head>
+  <title>Login</title>
+</head>
+<img class="img-fluid " style="width: 100%; height: 100%; position: fixed" src="../../assets/logimg.JPG" alt="Login">
+
+<div class="maindiv ">
+  <div class="row ">
+    <div class="logodiv col-md-12">
+      <img class="img-fluid" src="../../assets/logo.png" alt="Login">
+    </div>
+  </div>
+
+  <h3 class="lbl">Login</h3>
+  <div class="inputs">
+    <input (keyup.enter)="requestFocusToPassword(userNametxt.value)" #userNametxt class="form-control mr-sm-2"
+           id="usertxt" type="text" placeholder="Email">
+  </div>
+  <div class="inputs2 ">
+    <input (keyup.enter)="requestFocusToBasic()" #passwordtxt id="pswdtxt" class="form-control mr-sm-2" type="password"
+           placeholder="Password">
+  </div>
+  <div class="errorMessage">
+    <h6 class="btn-outline-danger" id="fill">Please fill the fields</h6>
+    <h6 class="btn-outline-danger" id="wrong">Check your details</h6>
+    <h6 class="btn-outline-danger" id="verify">Please verify your email</h6>
+  </div>
+  <div class="inputs3">
+    <button id="btn1" class="btn-danger btn" #log
+            (click)="login(userNametxt.value,passwordtxt.value)">
+      Sign In
+    </button>
+  </div>
+</div>

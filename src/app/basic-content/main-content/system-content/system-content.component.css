@@ -1,0 +1,83 @@
+.bottomPadding {
+  padding-bottom: 15px;
+}
+
+.Selects {
+  width: auto !important;
+  font-weight: bold;
+}
+
+.tablestyle {
+  height: 60vh;
+  font-size: 13px;
+  text-align: center;
+  font-family: "Yu Gothic";
+}
+
+label {
+  font-family: "Yu Gothic";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+button {
+  font-family: "Yu Gothic";
+  font-size: 15px;
+}
+
+.SelectDivs {
+  font-family: "Yu Gothic";
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+.refundBtn {
+  padding: 5px;
+  margin: 10px;
+}
+
+.mailbtn {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+.txtAreaa {
+  width: 100%;
+  height: 100%;
+}
+
+tbody tr:hover {
+  background-color: #D60D39;
+  color: white;
+}
+
+tbody tr:hover .btn-outline-success {
+  color: white;
+  border-color: white;
+}
+
+@media screen and (max-width: 1440px) {
+  .tablestyle {
+    height: 50vh;
+  }
+}
+
+.modal-content {
+  width: 70%;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 70%;
+  }
+}
+
+@media (min-width: 320px) {
+  .mailbtn {
+    margin: 5px;
+  }
+}

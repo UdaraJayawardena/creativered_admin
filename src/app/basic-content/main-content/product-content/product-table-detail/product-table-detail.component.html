@@ -1,0 +1,272 @@
+<div class="container-fluid top">
+  <br>
+  <div class="row">
+    <!--first searchbar-->
+    <div class="col-lg-2 col-xl-2 col-md-3 col-sm-4 col-12 go">
+
+      <!--item id aearch input bar-->
+      <input #itemidinput (keyup.enter)="itemIdSearch(itemidinput.value)" type="text" class="form-control inputs
+      searchtextbar"
+             placeholder="Item ID">
+    </div>
+
+    <!--forth searchbar-->
+    <div class="col-lg-2 col-xl-2 col-md-3 col-sm-4 col-12 go">
+      <input #productidinput (keyup.enter)="productIdSearch(productidinput.value)" type="text"
+             class="form-control inputs searchtextbar" placeholder="Product ID">
+    </div>
+  </div>
+</div>
+<br>
+<div style="float: right">
+
+  <div role="group" class="btn-group">
+    <button #active (click)="getActive()" type="button" value="Active"
+            class="btn btn-outline-secondary">Active
+    </button>
+    <button #inactive (click)="getInactive()" value="Inactive" type="button" class="btn btn-outline-secondary">Inactive
+    </button>
+  </div>
+
+</div>
+<br>
+<br>
+<div class="">
+  <div class="container-fluid table-responsive tablestyle">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">QtyOnHand</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Color</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Discount</th>
+        <th scope="col">ProductID</th>
+        <th class="centerize" scope="col">Action</th>
+        <th class="centerize" scope="col">Change</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let itmm of items">
+        <td>{{itmm.id}}</td>
+        <td>{{itmm.name}}</td>
+        <td>{{itmm.brand}}</td>
+        <td>{{itmm.qtyOnHand}}</td>
+        <td>{{itmm.price}}</td>
+        <td>{{itmm.status}}</td>
+        <td>{{itmm.color}}</td>
+        <td>{{itmm.rate}}</td>
+        <td>{{itmm.discount}}</td>
+        <td>{{itmm.productid}}</td>
+        <td class="centerize">
+          <button (click)="makeAction(actionType,itmm.id)" class="btn btn-outline-success">{{actionType}}</button>
+        </td>
+        <td class="centerize">
+          <button data-target="#exampleModal" data-toggle="modal" (click)="UpdateItemss(itmm)"
+                  class="btn btn-outline-success">Update
+          </button>
+        </td>
+      </tr>
+      <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--item update model-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <!--News data-->
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: bold" id="exampleModalLabel1"><u>Update News</u></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!--update item form-->
+        <form class="updateitemform">
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Header</label>
+              <input type="text" class="form-control" id="inputEmail54" placeholder="" #headerinput
+                     value="{{headerin}}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Date</label>
+              <input type="date" class="form-control" id="inputPassword54" placeholder="" #dateinput
+                     value="{{datein}}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Time</label>
+              <input type="time" class="form-control" id="inputEmail65" placeholder="" #timeinput
+                     value="{{timein}}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Description</label>
+              <input type="text" class="form-control" id="inputPassword65" placeholder="" #descriptioninput
+                     value="{{descriptionin}}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button (click)="enbl(headerinput.value, descriptioninput.value)" type="button"
+                      class="form-control"
+                      class="btn btn-success mt-4">Update Item
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+      <div id="disitem1" class="modal-header">
+        <h5 class="modal-title" style="font-weight: bold" id="exampleModalLabel"><u>Update
+          Item</u> {{' (' + itmnm + ')'}}</h5>
+      </div>
+      <div id="disitem2" class="modal-body">
+
+        <!--update item form-->
+        <form class="updateitemform">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Brand</label>
+              <input type="text" class="form-control" id="inputEmail4" #brandinput value="{{brandinputs}}"
+                     placeholder="brand">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Qty on Hand</label>
+              <input type="text" class="form-control" id="inputPassword4" #qtyonhandinput value="{{qtyonhandinputs}}"
+                     placeholder="qty on hand">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Price</label>
+              <input type="text" class="form-control" id="inputEmail5" placeholder="price" #priceinput
+                     value="{{priceinputs}}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Status</label>
+              <input type="text" class="form-control" id="inputEmail25" placeholder="price" #stinput
+                     value="{{statusinputs}}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Color</label>
+              <input type="text" class="form-control" id="inputPassword6" placeholder="color" #colorinput
+                     value="{{colorinputs}}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Rate</label>
+              <input type="text" class="form-control" id="inputEmail7" placeholder="rate" #rateinput
+                     value="{{rateinputs}}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Discount</label>
+              <input type="text" class="form-control" id="inputPassword7" placeholder="discount" #discountinput
+                     value="{{discountinputs}}">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputPassword6">Overview</label>
+              <div [(froalaModel)]="editorContent" [froalaEditor]='options'
+                   (froalaModelChange)="onChange($event)"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputPassword6">Specification</label>
+              <div [(froalaModel)]="editorContentSpec" [froalaEditor]='options'
+                   (froalaModelChange)="onChange($event)"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputPassword6">Highlights</label>
+              <div [(froalaModel)]="editorContentHighLight" [froalaEditor]='options'
+                   (froalaModelChange)="onChange($event)"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Image</label>
+              <input id="inimage" style="background-color:#D60D39;width:230px;border-radius: 0;margin-bottom: 5px"
+                     type="file" #iminput (change)="getImage($event)"
+                     value="{{imageinputs}}" placeholder="select">
+              <button class="btn btn-success" style="margin-bottom: 5px;margin-left: 5px" type="button" id="upldbtn"
+                      (click)="upload()">Upload
+              </button>
+            </div>
+          </div>
+          <div class="form-row">
+            <div style="margin: 10px!important;" *ngFor="let nwim of newimgary" class="form-group col-md-2">
+              <img style="height: 80px;width: 80px;padding: 5px"
+                   src="{{'https://e-com-site.s3.us-east-2.amazonaws.com/'+ nwim}}">
+              <button type="button" style="width:80px;font-size: 10px;height: 40px" (click)="setImageName(nwim)"
+                      class="btn btn-success">Delete Image
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div id="disitem3" class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <button type="button" (click)="saveItemUpdate(brandinput.value,qtyonhandinput.value,priceinput.value,
+        colorinput.value,rateinput.value,discountinput.value,headerinput.value,
+        dateinput.value,timeinput.value,descriptioninput.value,stinput.value)"
+                class="btn btn-success">Save changes
+        </button>
+      </div>
+
+      <!--news table-->
+      <div class="modal-body table-responsive container-fluid tablestyle">
+
+        <table style="height: 60vh" class="table table-responsive">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">News ID</th>
+            <th scope="col">Item ID</th>
+            <th scope="col">Header</th>
+            <th scope="col">News Date</th>
+            <th scope="col">News Time</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let nws of newss">
+            <td>{{nws.id}}</td>
+            <td>{{nws.item_id}}</td>
+            <td>{{nws.header}}</td>
+            <td>{{nws.newsDate}}</td>
+            <td>{{nws.newsTime}}</td>
+            <td>{{nws.description}}</td>
+            <td>{{nws.image}}</td>
+            <td>{{nws.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>

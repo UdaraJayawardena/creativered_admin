@@ -1,0 +1,104 @@
+.repo {
+  position: relative;
+}
+
+[type="date"] {
+  background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* custom styles */
+body {
+  padding: 4em;
+  background: #e5e5e5;
+  font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+label {
+  display: block;
+}
+
+input {
+  border: 1px solid #d60d39;
+  border-radius: 5px;
+  background-color: #d60d39;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 190px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #d60d39;
+}
+
+label {
+  font-size: 13px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+}
+
+button {
+  font-size: 15px;
+  font-family: "Yu Gothic";
+}
+
+.limit:hover {
+  cursor: pointer;
+}
+
+.buttons {
+  float: left;
+  padding: 10px;
+}
+
+.tablestyle {
+  font-size: 13px;
+  text-align: center;
+  font-family: "Yu Gothic";
+}
+
+.tblRows {
+  cursor: pointer;
+}
+
+.tbby tr {
+  cursor: pointer;
+}
+
+.tblRows:hover {
+  background-color: #D60D39;
+  color: white;
+}
+
+.tbby tr:hover {
+  background-color: #D60D39;
+  color: white;
+}
+
+.chart {
+  text-align: center !important;
+  width: 500px;
+}
+
+@media screen and (max-width: 767px) {
+  #btnSearch {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+
+  .contents {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 70%;
+  }
+}
