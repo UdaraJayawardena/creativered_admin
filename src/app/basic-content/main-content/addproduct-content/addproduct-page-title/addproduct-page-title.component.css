@@ -1,0 +1,106 @@
+#pagetitle {
+  font-family: "Yu Gothic UI";
+  font-weight: bold;
+  font-size: 21px;
+  color: white;
+}
+
+#pagetitle img {
+  height: 20px;
+  width: 20px;
+  padding-bottom: 2px;
+}
+
+#titlemainnav h6 {
+  font-size: 12px;
+  padding-top: 0.7rem;
+  padding-left: 0.5rem;
+  color: #f8f1ea
+}
+
+#titlemainnav {
+  padding: 0.2rem 0.2rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.bg-light {
+  background-color: #D60D39 !important;
+}
+
+#navbarTogglerDemo03 img {
+  height: 30px;
+  width: 40px;
+  padding: 0px 5px;
+}
+
+#navbarTogglerDemo03 img:hover {
+  height: 25px;
+  width: 35px;
+  cursor: pointer;
+}
+
+.navbar-toggler-icon {
+  background-image: url(../../../../../assets/DownSquared_50px.png) !important;
+}
+
+@media only screen and (max-width: 1070px) {
+
+  #pagetitle img {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    padding-bottom: 2px;
+  }
+
+  #titlemainnav h6 {
+    display: none;
+  }
+
+  #pagetitle {
+    padding-left: 10px;
+  }
+
+  #pagetitle img {
+    display: none;
+  }
+
+  #navbarTogglerDemo03 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 993px) {
+  #mainnav {
+    padding-top: 0px;
+    height: 10%;
+  }
+
+  .dropdown-menu {
+    right: 10px;
+    margin-left: 0px;
+    margin-top: 10px;
+    background-color: #363839;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  #formbar img {
+    position: relative;
+    top: 5px;
+    padding: 0;
+  }
+
+  .dropdown-menu {
+    right: 10px;
+    margin-left: 0px;
+    margin-top: 10px;
+    background-color: #363839;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "imaging": "imaging,lense mount,camera format,pixels,max resolution,aspect ratio,sensor type/size,file format,bit depth,dust reduction system,memorycard type",
+  "focus": "focus,focus type,focus model,autofocus points",
+  "viewfinder": "viewfinder,viewfinder type,viewfinder eye point,viewfinder coverage,viewfinder magnification,diopter adjustment,display screen,screen coverage,diagonal angle of view",
+  "exposure_control": "exposure_control,iso sensitivity,shutter,remote control,mirror lock-up,metering method,exposure modes,continuous shooting,white balance",
+  "flash": "flash,flash modes,built-in flash,max sync speed,flash compensation,dedicated flash system,external flash connection",
+  "av_recording": "av_recording,video recording,video format,aspect ratio,exposure ratio,focus,max video clip length,'audio recording",
+  "performances": "performance,self timer,interval recording,connectivity,wi-fi capable",
+  "power": "power,battery,ac power adapter,operating temperature,operating humidity",
+  "physical": "physical,dimensions (W x H x D),weight",
+  "packaging_info": "packaging_info,package weight,box dimensions (L x W x H)"
+}

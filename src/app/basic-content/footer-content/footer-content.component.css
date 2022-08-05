@@ -1,0 +1,23 @@
+#mainfooter {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  background-color: #363839;
+  height: auto;
+  padding: 2px 2px;
+  z-index: 3;
+}
+
+#mainfooter h6 {
+  position: relative;
+  margin-top: 1%;
+  padding-left: 10%;
+  color: white;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+
+#mainfooter h6 img {
+  height: 20px;
+  width: 20px;
+}

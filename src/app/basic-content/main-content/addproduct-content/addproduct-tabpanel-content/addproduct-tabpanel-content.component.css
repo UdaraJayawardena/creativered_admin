@@ -1,0 +1,81 @@
+.nav-item a {
+  color: #363839;
+}
+
+label, a {
+  font-family: "Yu Gothic";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+button {
+  font-family: "Yu Gothic";
+  font-size: 15px;
+}
+
+select {
+  font-family: "Yu Gothic";
+  font-size: 13px;
+  height: 30px !important;
+}
+
+.tablestyle {
+  font-size: 13px;
+  text-align: center;
+  font-family: "Yu Gothic";
+}
+
+.nav-item a:hover {
+  color: #d7123e;
+  font-weight: bold;
+}
+
+.form-group input {
+  border-radius: 10px;
+  height: 30px;
+}
+
+.form-group select {
+  border-radius: 10px;
+  height: 40px;
+}
+
+.btns {
+  margin-top: 35px;
+}
+
+.productbtn {
+  margin: 5px 5px;
+  border-radius: 10px;
+  height: 35px;
+  color: white !important;
+  font-weight: bold;
+}
+
+.spec
+#imageaddbtn {
+  margin-top: 26px;
+}
+
+@media only screen and (max-width: 768px) {
+  #imageaddbtn {
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    .tablestyle {
+      height: 45vh;
+    }
+  }
+
+  .modal-content {
+    width: 70%;
+  }
+
+  @media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 70%;
+    }
+  }
+
+}

@@ -1,0 +1,17 @@
+{
+  "universal": {
+    "skipInstall": false,
+    "directory": ".",
+    "project": "adminsideui"
+  },
+  "serverless": {
+    "provider": "aws",
+    "skipInstall": false,
+    "directory": ".",
+    "project": "adminsideui",
+    "serverless": {
+      "aws": {},
+      "gcloud": {}
+    }
+  }
+}

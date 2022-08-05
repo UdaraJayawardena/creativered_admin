@@ -1,0 +1,103 @@
+.searchtextbar {
+  background-image: url(../../../../../assets/Search_52px.png);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 2px 2px;
+  padding: 12px 20px 12px 30px;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.top {
+  position: relative;
+}
+
+.go {
+  display: flex;
+}
+
+.icons {
+  height: 22px;
+  padding-left: 5px;
+}
+
+.inputs {
+  height: 25px;
+  width: 160px;
+}
+
+.centerize {
+  text-align: center;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+.updateitemform label {
+  font-weight: bold;
+  color: #D60D39;
+}
+
+label {
+  font-size: 13px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+}
+
+button {
+  font-size: 15px;
+  font-family: "Yu Gothic";
+}
+
+.tablestyle {
+  height: 60vh;
+  font-size: 13px;
+  text-align: center;
+  font-family: "Yu Gothic";
+}
+
+#disitem1 {
+  display: none;
+}
+
+#disitem2 {
+  display: none;
+}
+
+#disitem3 {
+  display: none;
+}
+
+tbody tr:hover {
+  background-color: #D60D39;
+  color: white;
+}
+
+
+tbody tr:hover .btn-outline-success {
+  color: white;
+  border-color: white;
+}
+
+@media screen and (max-width: 575px) {
+  .go {
+    margin-bottom: 10px;
+  }
+
+  .inputs {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .tablestyle {
+    height: 45vh;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 70%;
+  }
+}

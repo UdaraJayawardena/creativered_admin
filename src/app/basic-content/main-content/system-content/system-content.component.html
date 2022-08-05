@@ -1,0 +1,218 @@
+<head>
+  <title>System</title>
+</head>
+<app-page-title-system></app-page-title-system>
+<br>
+<div>
+  <div class="container-fluid ">
+    <div class="SelectDivs">
+      <select #selectValue class="custom-select Selects">
+        <option #all value="All Problems" (click)="getSelectedValue(all.value)" selected>All Problems</option>
+        <option #shipping value="Shipping Problems" (click)="getSelectedValue(shipping.value)">Shipping Problems
+        </option>
+        <option #damage value="Damage goods" (click)="getSelectedValue(damage.value)">Damage goods</option>
+        <option #unexpected value="Unexpected Items" (click)="getSelectedValue(unexpected.value)">Unexpected Items
+        </option>
+        <option #refund value="Refund Problems" (click)="getSelectedValue(refund.value)">Refund Problems</option>
+      </select>
+      <button class="btn-danger btn refundBtn" data-toggle="modal" data-target="#rfnd">Refund Details</button>
+      <button class="btn-danger btn refundBtn" data-toggle="modal" data-target="#feedbckModal">Customer
+        Feedback
+      </button>
+      <div role="group" class="btn-group">
+        <button (click)="getUnseen()" #unseen type="button" value="unseen"
+                class="btn btn-outline-secondary">Unseen
+        </button>
+        <button (click)="getSeen()" #seen value="seen" type="button" class="btn btn-outline-secondary">Seen
+        </button>
+      </div>
+      <button class="btn-dark btn mailbtn" data-toggle="modal" data-target="#sendMailModal" style="margin-left: 10px">
+        Send mail
+      </button>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12 table-responsive container-fluid tablestyle bottomPadding">
+
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Complain Order Id</th>
+            <th scope="col">Complain Date</th>
+            <th scope="col">Complain Time</th>
+            <th scope="col">Message</th>
+            <th scope="col">Status</th>
+            <th scope="col">Complain Type Id</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let com of complains">
+            <th scope="row">{{com.id}}</th>
+            <td>{{com.complainOrderId}}</td>
+            <td>{{com.comDate}}</td>
+            <td>{{com.comTime}}</td>
+            <td>{{com.message}}</td>
+            <td>{{com.status}}</td>
+            <td>{{com.complainTypeID}}</td>
+            <td>
+              <button data-toggle="modal" data-target="#sendMailcusModal"
+                      (click)="deleteSeenMessages(selectValue.value,com.id)"
+                      class="btn btn-outline-success">{{buttonType}}</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Refund details modal-->
+<div class="modal mdstyle" id="rfnd" role="article">
+  <div class="modal-dialog-centered" role="article">
+    <div class="modal-content container-fluid">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2"><u>Refund Details</u></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div style="height: 300px" class="tablestyle col-xl-12 table-responsive container-fluid bottomPadding">
+
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Reason</th>
+              <th scope="col">Status</th>
+              <th scope="col">OrderId</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rqst of refRequests">
+              <td>{{rqst.id}}</td>
+              <td>{{rqst.refDate}}</td>
+              <td>{{rqst.refTime}}</td>
+              <td>{{rqst.reason}}</td>
+              <td>{{rqst.status}}</td>
+              <td>{{rqst.refundOrderId}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--FeedBack details modal-->
+<div class="modal mdstyle" id="feedbckModal" role="article">
+  <div class="modal-dialog-centered" role="article">
+    <div class="modal-content container-fluid">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2"><u>Customer Feedback</u></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div style="height: 300px" class="tablestyle col-xl-12 table-responsive container-fluid bottomPadding">
+
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Message</th>
+              <th scope="col">Item Describe Rate</th>
+              <th scope="col">Communication Rate</th>
+              <th scope="col">Shipping Time Rate</th>
+              <th scope="col">Shipping Handling Rate</th>
+              <th scope="col">Feedback Order Id</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let fb of feedbacks">
+              <td>{{fb.id}}</td>
+              <td>{{fb.feedDate}}</td>
+              <td>{{fb.feedTime}}</td>
+              <td>{{fb.feedbackMessage}}</td>
+              <td>{{fb.itemAsDescribe_Rate}}</td>
+              <td>{{fb.communicationRate}}</td>
+              <td>{{fb.shippingTimeRate}}</td>
+              <td>{{fb.shippingHandlingRate}}</td>
+              <td>{{fb.feedbackOrderId}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--send mail-->
+
+<div class="modal mdstyle" id="sendMailModal" role="article">
+  <div class="modal-dialog-centered" role="article">
+    <div class="modal-content container-fluid">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2"><u>Send mails for Customers</u></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div style="height: 300px" class="tablestyle col-xl-12 table-responsive container-fluid bottomPadding">
+
+          <div class="form-group">
+            <div [(froalaModel)]="editorContent" [froalaEditor]='optionsSpecs'
+                 (froalaModelChange)="onChanges($event)"></div>
+          </div>
+          <div id="modelbtns" class="modal-footer row">
+
+            <button (click)="sendmail()" type="button" class="btn btn-success">Send mail
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--send mail to relevent value-->
+
+<div class="modal mdstyle" id="sendMailcusModal" role="article">
+  <div class="modal-dialog-centered" role="article">
+    <div class="modal-content container-fluid">
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2"><u>Send reply for Complain</u></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div style="height: 300px" class="tablestyle col-xl-12 table-responsive container-fluid bottomPadding">
+
+          <div class="form-group">
+            <div [(froalaModel)]="editorContentcustomer" [froalaEditor]='optionsSpecs'
+                 (froalaModelChange)="onChanges($event)"></div>
+          </div>
+          <div id="modelbtnss" class="modal-footer row">
+
+            <button (click)="sendmailforCustomer()" type="button" class="btn btn-success">Send mail
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

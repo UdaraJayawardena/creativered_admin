@@ -1,0 +1,76 @@
+table tr {
+  font-size: 15px;
+}
+
+.rightdiv{
+  float: right;
+  position: relative;
+
+}
+.leftdiv{
+  padding: 10px;
+
+}
+.one{
+  margin: 10px;
+}
+.two{
+  margin: 10px;
+}
+.three{
+  margin: 10px;
+}
+
+@media all and (max-width:500px)  and (min-width: 0px){
+.rightdiv{
+  text-align: center;
+  float: none;
+  position: relative;
+}
+
+  .leftdiv{
+    text-align: center;
+    float: none;
+    position: relative;
+  }
+
+
+
+}
+@media all and (max-width:500px)  and (min-width: 0px){
+  .one{
+    /*margin: 10px; */
+    width: 40%;
+  }
+  .two{
+    /*margin: 10px; */
+    width: 40%;
+  }
+
+  .three{
+    width: 84%;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+}
+
+@media all and (max-width:420px)  and (min-width: 0px){
+  .one{
+    margin: 0;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .two{
+    margin: 0;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .three{
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+#maincontent {
+  position: relative;
+  height: 100%;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+
+@media only screen and (max-width: 1070px) {
+
+  #maincontent {
+    padding-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 993px) {
+  #maincontent {
+    padding-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  #maincontent {
+    padding-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #maincontent {
+    padding-bottom: 60px;
+  }
+}
