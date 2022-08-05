@@ -560,7 +560,7 @@ export class TableDetailsComponent implements OnInit {
                     '\n' +
                     '<p style="text-align: left; line-height: 1.15;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 11px;">creativered.com</span></p>\n' +
                     '\n' +
-                    '<p class="fr-text-bordered"><span style="font-size: 12px;"><strong>Copyright 2019 creativered. All Rights Reserved. Website Designed and Developed by VulcanD</strong></span></p>\n'
+                    '<p class="fr-text-bordered"><span style="font-size: 12px;"><strong>Copyright 2019 creativered. All Rights Reserved. Website Designed and Developed by G24</strong></span></p>\n'
 
                 }).subscribe((result2) => {
                     Swal.fire(
