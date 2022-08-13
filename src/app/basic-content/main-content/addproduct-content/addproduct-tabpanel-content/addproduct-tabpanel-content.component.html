@@ -63,7 +63,7 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label>Product Name</label>
-              <input #productnameinput type="text" class="form-control" id="inputEmail20" placeholder="">
+              <input #productnameinput name="productnameinput" type="text" class="form-control" id="inputEmail20" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputState2">Category Type</label>
@@ -165,26 +165,26 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Item Name</label>
-            <input #itemnameinput type="text" class="form-control" id="inputEmail5" placeholder="">
+            <input #itemnameinput type="text" class="form-control" id="inputEmail5" placeholder="Add Item Name">
           </div>
           <div class="form-group col-md-4">
             <label>Item Brand</label>
-            <input #itembrandinput type="text" class="form-control" id="inputEmail6" placeholder="">
+            <input #itembrandinput type="text" class="form-control" id="inputEmail6" placeholder="Add Item Brand">
           </div>
           <div class="form-group col-md-4">
             <label>Item Quantity</label>
-            <input #itemqtyinput type="text" class="form-control" id="inputEmail7" placeholder="">
+            <input #itemqtyinput type="text" class="form-control" id="inputEmail7" placeholder="Add Qty">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Item Price</label>
-            <input #itempriceinput type="text" class="form-control" id="inputEmail8" placeholder="">
+            <input #itempriceinput type="text" class="form-control" id="inputEmail8" placeholder="Add Price">
           </div>
           <div class="form-group col-md-4 row">
             <div class="col-md-6">
               <label>Item Color</label>
-              <input #itemcolorinput type="color" name="Color Picker" class="form-control" placeholder="">
+              <input #itemcolorinput type="color" name="Color Picker" class="form-control" placeholder="Add Colour">
             </div>
             <div class="col-md-6">
               <button (click)="addcolor(itemcolorinput.value)" id="imageaddbtn" class="btn btn-outline-success mt-4"
@@ -205,17 +205,18 @@
           </div>
           <div style="z-index: 2;" class="form-group col-md-12">
             <label>Highlights</label>
-            <textarea [froalaEditor]="config" (froalaModelChange)="onChange($event)"
-                      [(froalaModel)]="highlightModel"></textarea>
+            <textarea [froalaEditor]="config" (froalaModelChange)="onChange($event)" (change)="getHighlightDetail($event.target.value)"
+                      [(froalaModel)]="highlightModel" #highlights></textarea>
           </div>
           <div class="form-group col-md-12">
             <label>Specification</label>
             <div [(froalaModel)]="editorContentforSpecs" [froalaEditor]='optionsSpecs'
-                 (froalaModelChange)="onChanges($event)"></div>
+                 (froalaModelChange)="onChanges($event)" #itemspects></div>
           </div>
           <div style="z-index: 2;" class="form-group col-md-12">
             <label>Overview</label>
-            <textarea [froalaEditor]="config" (froalaModelChange)="onChange($event)" [(froalaModel)]="model"></textarea>
+            <textarea [froalaEditor]="config" (froalaModelChange)="onChange($event)" (change)="getOverViewDetail($event.target.value)"
+                      [(froalaModel)]="overViewModel" #itmoverview></textarea>
           </div>
         </div>
 
@@ -253,7 +254,6 @@
                      placeholder="select">
               <button class="btn btn-outline-success" style="margin-bottom: 5px;margin-left: 5px" type="button"
                       id="ulpldbtn"
-
                       (click)="uploadImagetoGallery()">Upload
               </button>
             </div>
