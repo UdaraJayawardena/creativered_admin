@@ -18,6 +18,10 @@ export class ImageserviceService {
 
   //function of upload image to the server
   uploadfile(file, fname) {
+    console.log('file name');
+    console.log(file);
+    console.log('fname');
+    console.log(fname);
     const bucket = new S3(
       {
         accessKeyId: this.aid,
@@ -27,7 +31,7 @@ export class ImageserviceService {
     );
 
     const params = {
-      Bucket: 'e-com-site',
+      Bucket: 'creativered-bucket',
       Key: fname,
       Body: file
     };

@@ -349,7 +349,7 @@ export class ProductTableDetailComponent implements OnInit {
                   this.dashboardservice.sendEmail({
                     to: result.email,
                     subject: 'creativered item update information',
-                    message: '<p style="text-align: justify;"><img src="https://e-com-site.s3.us-east-2.amazonaws.com/8266469940351170logo.png" style="width: 175px;" class="fr-fic fr-dib"></p>\n' +
+                    message: '<p style="text-align: justify;"></p>\n' +
                       '\n' +
                       '<h4 style="text-align: left; line-height: 1.15;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: blue;"><strong>Dear ' + result.firstName + '</strong> <strong>,</strong></span></h4>\n' +
                       '\n' +
@@ -398,7 +398,7 @@ export class ProductTableDetailComponent implements OnInit {
                   this.dashboardservice.sendEmail({
                     to: result.email,
                     subject: 'creativered item update information',
-                    message: '<p style="text-align: justify;"><img src="https://e-com-site.s3.us-east-2.amazonaws.com/8266469940351170logo.png" style="width: 175px;" class="fr-fic fr-dib"></p>\n' +
+                    message: '<p style="text-align: justify;"></p>\n' +
                       '\n' +
                       '<h4 style="text-align: left; line-height: 1.15;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: blue;"><strong>Dear ' + result.firstName + '</strong> <strong>,</strong></span></h4>\n' +
                       '\n' +
@@ -445,7 +445,7 @@ export class ProductTableDetailComponent implements OnInit {
                   this.dashboardservice.sendEmail({
                     to: result.email,
                     subject: 'creativered item update information',
-                    message: '<p style="text-align: justify;"><img src="https://e-com-site.s3.us-east-2.amazonaws.com/8266469940351170logo.png" style="width: 175px;" class="fr-fic fr-dib"></p>\n' +
+                    message: '<p style="text-align: justify;"></p>\n' +
                       '\n' +
                       '<h4 style="text-align: left; line-height: 1.15;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: blue;"><strong>Dear ' + result.firstName + '</strong> <strong>,</strong></span></h4>\n' +
                       '\n' +
