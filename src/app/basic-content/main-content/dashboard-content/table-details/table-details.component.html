@@ -65,11 +65,11 @@
   <div class="buttonSet">
 
     <div role="group" class="btn-group">
-      <button #unshipbtn (click)="getUnshipped()" type="button" value="Unshipping"
-              class="btn btn-outline-secondary">Not-Shipped
-      </button>
-      <button #ship value="shipping" (click)="getShip()" type="button" class="btn btn-outline-secondary">Shipped
-      </button>
+<!--      <button #unshipbtn (click)="getUnshipped()" type="button" value="Unshipping"-->
+<!--              class="btn btn-outline-secondary">Not-Shipped-->
+<!--      </button>-->
+<!--      <button #ship value="shipping" (click)="getShip()" type="button" class="btn btn-outline-secondary">Shipped-->
+<!--      </button>-->
     </div>
 
   </div>
@@ -93,7 +93,7 @@
         <th scope="col">Billing ID</th>
         <th scope="col">Shipping ID</th>
         <th class="centerize" scope="col">Detail</th>
-        <th class="centerize" scope="col">Action</th>
+<!--        <th class="centerize" scope="col">Action</th>-->
       </tr>
       </thead>
       <tbody id="tbbody">
@@ -113,10 +113,10 @@
                   class="btn btn-outline-success" data-toggle="modal" data-target="#showModal">Show
           </button>
         </td>
-        <td class="centerize">
-          <button id="lasttd" #shipbutton data-toggle="modal" data-target="#trackingmodal" value="shipping"
-                  (click)="shipModal(ordr)" class="btn btn-outline-success">{{ordr.actions}}</button>
-        </td>
+<!--        <td class="centerize">-->
+<!--          <button id="lasttd" #shipbutton data-toggle="modal" data-target="#trackingmodal" value="shipping"-->
+<!--                  (click)="shipModal(ordr)" class="btn btn-outline-success">{{ordr.actions}}</button>-->
+<!--        </td>-->
       </tr>
       <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
       </tbody>

@@ -95,22 +95,24 @@ export class TableDetailsComponent implements OnInit {
             let all: Array<Orders> = [];
 
             for (var i = 0; i < result.length; i++) {
-              if (result[i].status == 'not shipped') {
+              // if (result[i].status == 'not shipped') {
                 var ldate = new Date(result[i].orderDate).toLocaleDateString();
                 var orobj = new Orders(ldate, result[i].orderTime, result[i].status,
                   result[i].paymentMethod, result[i].paymentId, result[i].trackingId, result[i].id, result[i].customerOrderId,
                   result[i].billingid, result[i].shippingid, 'Ship');
                 all.push(orobj);
-              }
-              if (result[i].status == 'shipped') {
-                var ldates = new Date(result[i].orderDate).toLocaleDateString();
-                var orobjs = new Orders(ldates, result[i].orderTime, result[i].status,
-                  result[i].paymentMethod, result[i].paymentId, result[i].trackingId, result[i].id, result[i].customerOrderId,
-                  result[i].billingid, result[i].shippingid, 'Completed');
-                all.push(orobjs);
-              }
+              // }
+              // if (result[i].status == 'shipped') {
+              //   var ldates = new Date(result[i].orderDate).toLocaleDateString();
+              //   var orobjs = new Orders(ldates, result[i].orderTime, result[i].status,
+              //     result[i].paymentMethod, result[i].paymentId, result[i].trackingId, result[i].id, result[i].customerOrderId,
+              //     result[i].billingid, result[i].shippingid, 'Completed');
+              //   all.push(orobjs);
+              // }
             }
             this.orderss = all;
+            // console.log('orderss list');
+            // console.log(this.orderss);
           }, (error1 => {
             console.log(error1);
           })
@@ -140,18 +142,21 @@ export class TableDetailsComponent implements OnInit {
   getUnshipped() {
     this.dashboardService.getUnshippedData()
       .subscribe((result) => {
-          let unship: Array<Orders> = result;
-          let unship1: Array<Orders> = [];
+        // console.log('======= result');
+        // console.log(result);
+        let unship: Array<Orders> = result;
+        let unship1: Array<Orders> = [];
           for (var i = 0; i < unship.length; i++) {
-            if (unship[i].status == 'not shipped') {
+            // if (unship[i].status == 'not shipped') {
               var ldate = new Date(unship[i].orderDate).toLocaleDateString();
               var orobj = new Orders(ldate, unship[i].orderTime, unship[i].status,
                 unship[i].paymentMethod, unship[i].paymentId, unship[i].trackingId, unship[i].id, unship[i].customerOrderId,
                 unship[i].billingid, unship[i].shippingid, 'Ship');
               unship1.push(orobj);
-            }
+            // }
           }
           this.orderss = unship1;
+        // console.log(this.orderss);
           this.orders = this.dashboardService.getUnshippedData();
           this.orders.subscribe(() => this.showSpinner = false);
         }, (error1 => {
