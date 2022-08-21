@@ -23,27 +23,27 @@
       <li class="nav-item menudesign">
         <a routerLink="/basic/main/customer" class="nav-link">customer</a>
       </li>
-      <li class="nav-item menudesign">
-        <a routerLink="/basic/main/reports" class="nav-link">reports</a>
-      </li>
       <li class="nav-item menudesign" style="border-bottom-right-radius: 10px">
-        <a routerLink="/basic/main/system" style="border-right: none" class="nav-link">system</a>
+        <a routerLink="/basic/main/reports" class="nav-link" style="border-right: none">reports</a>
       </li>
+<!--      <li class="nav-item menudesign" style="border-bottom-right-radius: 10px">-->
+<!--        <a routerLink="/basic/main/system" style="border-right: none" class="nav-link">system</a>-->
+<!--      </li>-->
     </ul>
 
     <!--searchbar,notification icon,acccount icon with dropdown-->
     <form id="formbar" class="form-inline my-2 my-lg-0">
       <!--<input id="searchtextbar" class="form-control mr-sm-2" type="search" placeholder="Search">-->
-      <img routerLink="/basic/main/system" id="notifyicon" style="margin-left:10px;width: 40px;padding:5px;height: 40px; cursor: pointer;
-        " src="../../../assets/Appointment%20Reminders_48px.png">
-      <span style="margin-top: -25px; margin-left: -15px;" class="badge badge-dark">{{complainsCount}}</span>
+<!--      <img routerLink="/basic/main/system" id="notifyicon" style="margin-left:10px;width: 40px;padding:5px;height: 40px; cursor: pointer;-->
+<!--        " src="../../../assets/Appointment%20Reminders_48px.png">-->
+<!--      <span style="margin-top: -25px; margin-left: -15px;" class="badge badge-dark">{{complainsCount}}</span>-->
       <div class="dropdown">
         <img id="propic" style="margin-left:10px;width: 40px;padding:5px;height: 40px;border:2px solid rgba(54,56,57,0.45);
         border-radius: 100px" src="../../../assets/Edit%20User%20Male_48px.png">
         <div id="drp" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" data-toggle="modal" data-target="#md">Sign up</a>
           <a class="dropdown-item" data-toggle="modal" data-target="#md1">Reset Password</a>
-          <a class="dropdown-item" data-toggle="modal" data-target="#md2">Forget Password</a>
+<!--          <a class="dropdown-item" data-toggle="modal" data-target="#md2">Forget Password</a>-->
           <a class="dropdown-item" routerLink="/login" (click)="logout()">Log out</a>
         </div>
       </div>
@@ -169,48 +169,47 @@
 </div>
 
 <!--user forget password modal-->
-<div class="modal mdstyle" id="md2" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <!--<div class="modal-dialog modal-notify modal-warning" role="document">-->
-      <!--Header-->
-      <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2"><u>Forget Password</u></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">&times;</span>
-        </button>
-      </div>
 
-      <!--Body-->
-      <form>
-        <div class="modal-body">
-          <div class="form-group">
-            <div class="md-form ">
-              <label data-error="wrong" data-success="right"> Email</label>
-              <input type="email" id="mailtxtss" class="form-control validate" #emailValue>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="md-form ">
-              <label data-error="wrong" data-success="right"> New Password</label>
-              <input type="password" id="mailtx" class="form-control validate" #forgetNewPassword>
-            </div>
-          </div>
-        </div>
-        <div id="modelbtns" class="modal-footer row">
-          <div id="IncorrectEmail" class="lblIncorrect">
-            <h6 class="badge-danger">Incorrect Email</h6>
-          </div>
-          <div id="field" class="lblIncorrect">
-            <h6 class="badge-danger">Please fill the fields</h6>
-          </div>
+<!--<div class="modal mdstyle" id="md2" role="dialog">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header text-center">-->
+<!--        <h4 class="modal-title white-text w-100 font-weight-bold py-2"><u>Forget Password</u></h4>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true" class="white-text">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
 
-          <button type="button" class="btn btn-success"
-                  (click)="forgetUser(emailValue.value,forgetNewPassword.value)"
-          >Confirm
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+<!--      &lt;!&ndash;Body&ndash;&gt;-->
+<!--      <form>-->
+<!--        <div class="modal-body">-->
+<!--          <div class="form-group">-->
+<!--            <div class="md-form ">-->
+<!--              <label data-error="wrong" data-success="right"> Email</label>-->
+<!--              <input type="email" id="mailtxtss" class="form-control validate" #emailValue>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <div class="md-form ">-->
+<!--              <label data-error="wrong" data-success="right"> New Password</label>-->
+<!--              <input type="password" id="mailtx" class="form-control validate" #forgetNewPassword>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div id="modelbtns" class="modal-footer row">-->
+<!--          <div id="IncorrectEmail" class="lblIncorrect">-->
+<!--            <h6 class="badge-danger">Incorrect Email</h6>-->
+<!--          </div>-->
+<!--          <div id="field" class="lblIncorrect">-->
+<!--            <h6 class="badge-danger">Please fill the fields</h6>-->
+<!--          </div>-->
+
+<!--          <button type="button" class="btn btn-success"-->
+<!--                  (click)="forgetUser(emailValue.value,forgetNewPassword.value)"-->
+<!--          >Confirm-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

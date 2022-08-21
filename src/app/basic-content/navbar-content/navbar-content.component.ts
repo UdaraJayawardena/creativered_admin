@@ -32,8 +32,8 @@ export class NavbarContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refreshCount();
-    this.getCountOfComplains();
+    // this.refreshCount();
+    // this.getCountOfComplains();
   }
 
   public refreshCount() {

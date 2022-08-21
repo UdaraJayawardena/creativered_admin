@@ -8,29 +8,32 @@
   <div class="container-fluid">
 
     <div style="padding-top: 20px" class="container-fluid table-responsive">
-      <ul id="clothing" class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" href="#normal" id="normal-report" role="tab" data-toggle="tab"
-             aria-controls="category"
-             aria-expanded="true">Normal Reports</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#google" id="google-report" role="tab" data-toggle="tab" aria-controls="home">Google
-            Reports</a>
-        </li>
-      </ul>
+<!--      <ul id="clothing" class="nav nav-tabs" role="tablist">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link active" href="#normal" id="normal-report" role="tab" data-toggle="tab"-->
+<!--             aria-controls="category"-->
+<!--             aria-expanded="true">Normal Reports</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="#google" id="google-report" role="tab" data-toggle="tab" aria-controls="home">Google-->
+<!--            Reports</a>-->
+<!--        </li>-->
+<!--      </ul>-->
 
 
-      <div class="tab-content">
+<!--      <div >-->
 
         <!--normal-->
         <br>
         <div role="tabpanel" class="tab-pane fade show active row" id="normal"
              aria-labelledby="normal-report">
-
+  <div class="row">
+    <div class="col-md-3">
           <div style="text-align: center">
             <h5 style="color: #D60D39">Orders Count</h5>
           </div>
+    </div>
+    <div class="col-md-2">
           <div class="dropdown buttons">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                     data-toggle="dropdown"
@@ -43,7 +46,8 @@
               <a (click)="filterByYear(0)" class="dropdown-item limit">from launch</a>
             </div>
           </div>
-
+    </div>
+    <div class="col-md-2">
           <div class="dropdown buttons">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                     data-toggle="dropdown"
@@ -56,7 +60,8 @@
               <a (click)="filterByMonth(24)" class="dropdown-item limit">Past 24 months</a>
             </div>
           </div>
-
+</div>
+    <div class="col-md-2">
           <div class="dropdown buttons">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
                     data-toggle="dropdown"
@@ -69,10 +74,13 @@
               <a (click)="filterByQuater(12)" class="dropdown-item limit">last 12 quarters</a>
             </div>
           </div>
-
+</div>
+    <div class="col-md-3">
           <div style="float: right">
             <h6>{{selectedLabel}}</h6>
           </div>
+      </div>
+  </div>
 
           <!--chart-->
           <div class="table-responsive" style="display: block; width: 100%">
@@ -119,7 +127,7 @@
             </div>
           </div>
           <br>
-          <div class="row">
+<!--          <div class="row">-->
             <div class="col-xl-11 text-center">
               <div class="table-responsive" style="display: block;width: 100%;">
                 <table class="table">
@@ -141,10 +149,10 @@
               </div>
 
             </div>
-          </div>
+<!--          </div>-->
           <br>
 
-          <div class="row">
+<!--          <div class="row">-->
             <div class="col-xl-11 text-center table-responsive">
               <table class="table">
                 <tbody>
@@ -165,7 +173,7 @@
                 </tbody>
               </table>
             </div>
-          </div>
+<!--          </div>-->
 
           <!--=====================================================================================-->
           <div style="padding-top: 20px" class="container-fluid table-responsive">
@@ -358,27 +366,22 @@
         <br>
 
         <!--google-->
-        <br>
-        <div role="tabpanel" class="tab-pane fade show" id="google"
-             aria-labelledby="google-report">
+<!--        <br>-->
+<!--        <div role="tabpanel" class="tab-pane fade show" id="google"-->
+<!--             aria-labelledby="google-report">-->
+<!--          <div style="height: 55vh; padding-top: 50px;" class="text-center">-->
+<!--            <button class="google-btn">-->
+<!--              <img src="../../../../assets/Google-512.webp" width="30px" alt="google-icon">-->
+<!--              <span style="padding-left: 15px; font-weight: bold; color: #00000075;">Sign in with Google</span>-->
+<!--            </button>-->
+<!--            <div style="padding-top: 30px;font-size: 12px;color: #00000073;">For getting google analytics first you have-->
+<!--              to sign in google with authorized google account.-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <br>-->
 
-          <div style="height: 55vh; padding-top: 50px;" class="text-center">
-            <button class="google-btn">
-              <img src="../../../../assets/Google-512.webp" width="30px" alt="google-icon">
-              <span style="padding-left: 15px; font-weight: bold; color: #00000075;">Sign in with Google</span>
-            </button>
-            <div style="padding-top: 30px;font-size: 12px;color: #00000073;">For getting google analytics first you have
-              to sign in google with authorized google account.
-            </div>
-          </div>
-          <!--          <button type="button" class="btn btn-success" (click)="getReportData()">ok</button>-->
-
-          <!--          <iframe src=""></iframe>-->
-
-        </div>
-        <br>
-
-      </div>
+<!--      </div>-->
     </div>
   </div>
 
