@@ -148,17 +148,17 @@
       <form style="padding-top: 20px;padding-bottom: 10px" class="container-fluid">
         <div class="form-row">
           <div class="form-group col-md-4">
+            <label for="inputState3">Category Type</label>
+            <select #itemcattype id="inputState3" class="form-control" (change)="getProdDetail($event.target.value)">
+              <option selected>Select Category</option>
+              <option *ngFor="let ct of category" [value]="ct.id">{{ct.category}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
             <label for="inputState2">Product Type</label>
             <select #itemprtype id="inputState2" (change)="getSpecDetail($event.target.value)" class="form-control">
               <option selected>Select Product</option>
               <option *ngFor="let pr of product" [value]="pr.id">{{pr.productType}}</option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState3">Category Type</label>
-            <select #itemcattype id="inputState3" class="form-control">
-              <option selected>Select Category</option>
-              <option *ngFor="let ct of category">{{ct.category}}</option>
             </select>
           </div>
         </div>
@@ -169,7 +169,7 @@
           </div>
           <div class="form-group col-md-4">
             <label>Item Brand</label>
-            <input #itembrandinput type="text" class="form-control" id="inputEmail6" placeholder="Add Item Brand">
+            <input #itembrandinput type="text" class="form-control" id="inputEmail6" placeholder="Add Item Brand" disabled="true">
           </div>
           <div class="form-group col-md-4">
             <label>Item Quantity</label>

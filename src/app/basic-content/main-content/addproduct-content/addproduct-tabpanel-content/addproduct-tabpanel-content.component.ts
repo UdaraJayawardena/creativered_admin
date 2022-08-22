@@ -104,8 +104,9 @@ export class AddproductTabpanelContentComponent implements OnInit {
   mainspect: Array<any> = [];
   imcount: string = '';
   mainspeclist: Array<any> = [];
-  selectedProId: number;
   rentalimg: string;
+  selectedProId: number;
+  selectedCatId: number;
 
   product_name: string = "";
   item_product: string = "";
@@ -143,7 +144,7 @@ export class AddproductTabpanelContentComponent implements OnInit {
 
   ngOnInit() {
     this.getAddCategoryData(); //get all category data
-    this.getProductData(); //get all product data
+    // this.getProductData(); //get all product data
     this.getAllItems(); //get all item data
     this.madeCheckbox(); //set all check box
     // this.getALlGalleryData(); //get all gallery data
@@ -306,6 +307,8 @@ export class AddproductTabpanelContentComponent implements OnInit {
 
   //function of get specification list
   getSpecDetail(prid) {
+    let selected_product_name = this.product.find(prod => prod.id == prid).productType;
+        console.log(selected_product_name,prid);
     this.selectedProId = Number(prid);
     this.productservice.getProductIdData(prid)
       .subscribe((result: Product) => {
@@ -314,6 +317,7 @@ export class AddproductTabpanelContentComponent implements OnInit {
           let result1 = '$' + result2;
           let sspec = result1.replace(/[$]/g, '<br><br><b>(Main Title):- </b>');
           let lspec = sspec.replace(/,/g, '<br>');
+        this.item_brandElement.nativeElement.value = selected_product_name;
           this.setToTextEditer(lspec);
         }, (error1 => {
           console.log(error1);
@@ -475,6 +479,7 @@ export class AddproductTabpanelContentComponent implements OnInit {
   getAddCategoryData() {
     this.addproductservice.getAddCategoryData()
       .subscribe((result) => {
+        console.log(result);
           this.category = result;
           this.categorys = this.addproductservice.getAddCategoryData();
           this.categorys.subscribe(() => this.showSpinner = false);
@@ -749,5 +754,21 @@ export class AddproductTabpanelContentComponent implements OnInit {
     // console.log('strlist comes');
     // console.log(strlist);
     return strlist;
+  }
+
+  getProdDetail(catId) {
+    this.selectedCatId = Number(catId);
+    this.productservice.getProductOnCategory(catId)
+      .subscribe((result:any) => {
+        console.log(result);
+        this.product = result.data;
+        }, (error1 => {
+          Swal.fire(
+            'Error',
+            error1.error.error.message + '',
+            'error'
+          );
+        })
+      );
   }
 }

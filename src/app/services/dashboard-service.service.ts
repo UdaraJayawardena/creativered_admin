@@ -80,6 +80,7 @@ export class DashboardServiceService {
   }
 
   sendEmail(param: { to: any; subject: string; message: string }) {
+    console.log('param',param);
     return this.http.post(this.super.getEmailUrl() + 'mail', param);
   }
   // sendEmail(url, data) {

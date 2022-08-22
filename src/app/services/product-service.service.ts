@@ -97,4 +97,9 @@ export class ProductServiceService {
   getGalleryData(): Observable<any> {
     return this.http.get(this.super.getBaseUrl() + '/Galleries' + '?access_token=' + this.localStorage.getItem('token'));
   }
+
+  getProductOnCategory(catId) {
+    return this.http.get(this.super.getBaseUrl() + '/Categories/getProductsByCategoryId?categoryId=' + catId + '?access_token=' +
+      this.localStorage.getItem('token'));
+  }
 }

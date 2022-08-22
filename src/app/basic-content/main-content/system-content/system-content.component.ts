@@ -330,6 +330,7 @@ export class SystemContentComponent implements OnInit {
           for (var i = 0; i < this.complains.length; i++) {
             if (this.complains[i].id == this.complainid) {
               this.complains[i].status = 'true';
+              console.log('fdgdfgdfgdfg',this.complains);
               this.systemServiceService.updateComplain(this.complains[i])
                 .subscribe((result) => {
                     this.getUnseen();
