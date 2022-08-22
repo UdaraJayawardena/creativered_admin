@@ -6,15 +6,15 @@
 <div>
   <div class="container-fluid ">
     <div class="SelectDivs">
-      <select #selectValue class="custom-select Selects">
-        <option #all value="All Problems" (click)="getSelectedValue(all.value)" selected>All Problems</option>
-        <option #shipping value="Shipping Problems" (click)="getSelectedValue(shipping.value)">Shipping Problems
-        </option>
-        <option #damage value="Damage goods" (click)="getSelectedValue(damage.value)">Damage goods</option>
-        <option #unexpected value="Unexpected Items" (click)="getSelectedValue(unexpected.value)">Unexpected Items
-        </option>
-        <option #refund value="Refund Problems" (click)="getSelectedValue(refund.value)">Refund Problems</option>
-      </select>
+<!--      <select #selectValue class="custom-select Selects">-->
+<!--        <option #all value="All Problems" (click)="getSelectedValue(all.value)" selected>All Problems</option>-->
+<!--        <option #shipping value="Shipping Problems" (click)="getSelectedValue(shipping.value)">Shipping Problems-->
+<!--        </option>-->
+<!--        <option #damage value="Damage goods" (click)="getSelectedValue(damage.value)">Damage goods</option>-->
+<!--        <option #unexpected value="Unexpected Items" (click)="getSelectedValue(unexpected.value)">Unexpected Items-->
+<!--        </option>-->
+<!--        <option #refund value="Refund Problems" (click)="getSelectedValue(refund.value)">Refund Problems</option>-->
+<!--      </select>-->
       <button class="btn-danger btn refundBtn" data-toggle="modal" data-target="#rfnd">Refund Details</button>
       <button class="btn-danger btn refundBtn" data-toggle="modal" data-target="#feedbckModal">Customer
         Feedback
@@ -26,9 +26,9 @@
         <button (click)="getSeen()" #seen value="seen" type="button" class="btn btn-outline-secondary">Seen
         </button>
       </div>
-      <button class="btn-dark btn mailbtn" data-toggle="modal" data-target="#sendMailModal" style="margin-left: 10px">
-        Send mail
-      </button>
+<!--      <button class="btn-dark btn mailbtn" data-toggle="modal" data-target="#sendMailModal" style="margin-left: 10px">-->
+<!--        Send mail-->
+<!--      </button>-->
     </div>
 
     <div class="row">
