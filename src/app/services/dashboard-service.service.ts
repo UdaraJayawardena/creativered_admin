@@ -81,7 +81,7 @@ export class DashboardServiceService {
 
   sendEmail(param: { to: any; subject: string; message: string }) {
     console.log('param',param);
-    return this.http.post(this.super.getEmailUrl() + 'mail', param);
+    return this.http.post(this.super.getBaseUrl() + '/Complain_replies/mail', param);
   }
   // sendEmail(url, data) {
   //   console.log(url);
